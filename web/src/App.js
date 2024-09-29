@@ -30,7 +30,7 @@ function App() {
     if (isRunning) {
       socketRef.current = new WebSocket(SOCKET_URL);
       console.log('Socket:' , SOCKET_URL);
-      console.log('socketRef:' , socketRef.current);
+      console.log('socket Ref:' , socketRef.current);
       socketRef.current.onmessage = (event) => {
         const data = JSON.parse(event.data);
         if (data && data.value) {
