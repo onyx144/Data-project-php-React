@@ -3,13 +3,13 @@ import Statistics from './components/statistics';
 import { calculate } from './components/calculate';
 import axios from 'axios';
 
-const SOCKET_URL = 'wss://trade.termplat.com:8800/?password=1234';
+const SOCKET_URL = env.api_url;
 
 function App() {
-  const [quoteCount, setQuoteCount] = useState(10); // Количество котировок
+  const [quoteCount, setQuoteCount] = useState(10); 
   const [statistics, setStatistics] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
-  const [quotesProcessed, setQuotesProcessed] = useState(0); // Общее количество обработанных котировок
+  const [quotesProcessed, setQuotesProcessed] = useState(0); 
   const statsRef = useRef({
     totalQuotes: 0,
     sum: 0,
@@ -22,7 +22,6 @@ function App() {
   const socketRef = useRef(null);
 
   const handleQuote = (value) => {
-    // Инкрементально обновляем статистику
     calculate(value, statsRef.current);
     setQuotesProcessed((prev) => prev + 1);
   };
@@ -60,7 +59,6 @@ function App() {
 
       setStatistics(stats);
 
-      // Отправка статистики на сервер
       /*axios.post('https://your-backend-url.com/save-stats', stats)
         .then(response => console.log('Data saved:', response.data))
         .catch(error => console.error('Error saving data:', error));*/
