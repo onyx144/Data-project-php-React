@@ -1,2 +1,2 @@
 # Data-project-php-React
-Project for counting data coming from a web socket 
+A litle task with one web file (File responsible for the front) and a php file (File responsible for the back)
